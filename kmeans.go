@@ -155,14 +155,6 @@ func OutputToSVG(points []*Circle, centroids []Circle, k int) string {
     // Get some (hopefully) nice colors for each different cluster
     colors := _randomColors(k)
 
-    // Output the clusters in special colors (as a bit larger circles)
-    for i := 0; i < len(centroids); i++ {
-        color := colors[centroids[i].cluster]
-        x := int(centroids[i].x * scale)
-        y := int(centroids[i].y * scale)
-        canvas.Circle(x, y, 6, "stroke:black;fill:" + color)
-    }
-
     // Output the clusters and points
     for i := 0; i < len(points); i++ {
         color := colors[points[i].cluster]
@@ -170,6 +162,15 @@ func OutputToSVG(points []*Circle, centroids []Circle, k int) string {
         y := int(points[i].y * scale)
         canvas.Circle(x, y, 3, "fill:" + color)
     }
+
+    // Output the centroids in special colors (as a bit larger circles)
+    for i := 0; i < len(centroids); i++ {
+        color := colors[centroids[i].cluster]
+        x := int(centroids[i].x * scale)
+        y := int(centroids[i].y * scale)
+        canvas.Circle(x, y, 6, "stroke:black;fill:" + color)
+    }
+
     canvas.End()
     return buffer.String()
 }
