@@ -43,4 +43,4 @@ In the second way we will output the HTML to the stdout. I recommend redirecting
 
 ## Example
 
-Currently the web-service is available at the following URL (likely to change): http://cassarossa.samfundet.no:8080/
+Currently the web-service is available at the following URL: http://kmeans.schistad.info/
